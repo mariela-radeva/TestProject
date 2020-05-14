@@ -11,11 +11,10 @@ public class MainVerticle extends AbstractVerticle {
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     Router router = Router.router(vertx);
-      router.route("/login*").handler(StaticHandler.create("client"));
+      router.route("/assets*").handler(StaticHandler.create());
 
       router.route("/login").handler(routingContext -> {
           HttpServerResponse response = routingContext.response();
-          System.out.println("Hello");
           response.sendFile("argon-dashboard-master/examples/login.html");
       });
 
